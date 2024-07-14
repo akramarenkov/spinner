@@ -2,7 +2,9 @@
 // go beyond the end value.
 package spinner
 
-import "golang.org/x/exp/constraints"
+import (
+	"golang.org/x/exp/constraints"
+)
 
 // Iterates over integer values, while returning the begin value when trying to
 // go beyond the end value.
