@@ -15,6 +15,9 @@ type Spinner[Type constraints.Integer] struct {
 }
 
 // Creates Spinner instance.
+//
+// If begin is greater than end, the counter value will decrease, otherwise it will
+// increase.
 func New[Type constraints.Integer](begin Type, end Type) *Spinner[Type] {
 	spn := &Spinner[Type]{
 		actual: begin,
