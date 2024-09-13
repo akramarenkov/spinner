@@ -30,16 +30,32 @@ func (spn *Spinner[Type]) Actual() Type {
 	return spn.actual
 }
 
-// Increases the current value of the counter, if its next value exceeds the end value,
-// it will be reset to the begin value.
+// Increases/decreases the current value of the counter. If the next value is out of
+// end value, it will be reset to the begin value.
 func (spn *Spinner[Type]) Spin() {
 	spn.actual = spn.spin()
 }
 
 func (spn *Spinner[Type]) spin() Type {
+	if spn.begin <= spn.end {
+		return spn.forward()
+	}
+
+	return spn.backward()
+}
+
+func (spn *Spinner[Type]) forward() Type {
 	if spn.actual >= spn.end {
 		return spn.begin
 	}
 
 	return spn.actual + 1
+}
+
+func (spn *Spinner[Type]) backward() Type {
+	if spn.actual <= spn.end {
+		return spn.begin
+	}
+
+	return spn.actual - 1
 }
