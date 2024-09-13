@@ -42,21 +42,22 @@ func TestSpinner(t *testing.T) {
 	require.Equal(t, -2, spinner.Actual())
 }
 
-func TestSpinnerEndIsEqualBegin(t *testing.T) {
-	spinner := New(1, 1)
-	require.Equal(t, 1, spinner.Actual())
-
-	spinner.Spin()
-	require.Equal(t, 1, spinner.Actual())
-
-	spinner.Spin()
-	require.Equal(t, 1, spinner.Actual())
-
-	spinner.Spin()
-	require.Equal(t, 1, spinner.Actual())
+func TestSpinnerNext(t *testing.T) {
+	spinner := New(-2, 2)
+	require.Equal(t, -2, spinner.Actual())
+	require.Equal(t, -1, spinner.Next())
+	require.Equal(t, 0, spinner.Next())
+	require.Equal(t, 1, spinner.Next())
+	require.Equal(t, 2, spinner.Next())
+	require.Equal(t, -2, spinner.Next())
+	require.Equal(t, -1, spinner.Next())
+	require.Equal(t, 0, spinner.Next())
+	require.Equal(t, 1, spinner.Next())
+	require.Equal(t, 2, spinner.Next())
+	require.Equal(t, -2, spinner.Next())
 }
 
-func TestSpinnerEndIsEqualBeginNegative(t *testing.T) {
+func TestSpinnerEndIsEqualBegin(t *testing.T) {
 	spinner := New(-1, -1)
 	require.Equal(t, -1, spinner.Actual())
 
@@ -159,6 +160,18 @@ func BenchmarkSpinner(b *testing.B) {
 	for range b.N {
 		actual = spinner.Actual()
 		spinner.Spin()
+	}
+
+	require.NotNil(b, actual)
+}
+
+func BenchmarkSpinnerNext(b *testing.B) {
+	spinner := New(0, 10)
+
+	actual := 0
+
+	for range b.N {
+		actual = spinner.Next()
 	}
 
 	require.NotNil(b, actual)
