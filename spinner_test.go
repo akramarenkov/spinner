@@ -131,18 +131,12 @@ func TestSpinnerOverflow(t *testing.T) {
 func BenchmarkSpinner(b *testing.B) {
 	spinner := New(0, 10)
 
-	// actual is used to prevent compiler optimizations
 	actual := 0
-
-	b.ResetTimer()
 
 	for range b.N {
 		actual = spinner.Actual()
 		spinner.Spin()
 	}
 
-	b.StopTimer()
-
-	// meaningless check
 	require.NotNil(b, actual)
 }
