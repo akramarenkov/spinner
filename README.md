@@ -23,7 +23,6 @@ import (
 
 func main() {
     spinner := spinner.New(-1, 2)
-
     fmt.Println(spinner.Actual())
 
     for range 7 {

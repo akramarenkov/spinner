@@ -6,8 +6,9 @@ import (
 	"github.com/akramarenkov/spinner"
 )
 
-func ExampleSpinner() {
-	spinner := spinner.New(-1, 2)
+func ExampleStepper() {
+	spinner, err := spinner.NewStepper(-1, 2, 2)
+	fmt.Println(err)
 	fmt.Println(spinner.Actual())
 
 	for range 7 {
@@ -16,18 +17,20 @@ func ExampleSpinner() {
 	}
 
 	// Output:
+	// <nil>
 	// -1
-	// 0
 	// 1
 	// 2
 	// -1
-	// 0
 	// 1
 	// 2
+	// -1
+	// 1
 }
 
-func ExampleSpinner_Next() {
-	spinner := spinner.New(-1, 2)
+func ExampleStepper_Next() {
+	spinner, err := spinner.NewStepper(-1, 2, 2)
+	fmt.Println(err)
 	fmt.Println(spinner.Actual())
 
 	for range 7 {
@@ -35,12 +38,13 @@ func ExampleSpinner_Next() {
 	}
 
 	// Output:
+	// <nil>
 	// -1
-	// 0
 	// 1
 	// 2
 	// -1
-	// 0
 	// 1
 	// 2
+	// -1
+	// 1
 }
