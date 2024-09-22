@@ -57,3 +57,19 @@ func TestIterStepPanic(t *testing.T) {
 		}
 	}()
 }
+
+func BenchmarkIter(b *testing.B) {
+	for number := range Iter(1, b.N) {
+		if number == b.N {
+			return
+		}
+	}
+}
+
+func BenchmarkIterStep(b *testing.B) {
+	for number := range IterStep(1, b.N, 1) {
+		if number == b.N {
+			return
+		}
+	}
+}
