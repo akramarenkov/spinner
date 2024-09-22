@@ -11,9 +11,9 @@ import (
 // If begin is greater than end, the return value will be decremented, otherwise it
 // will be incremented.
 func Iter[Type constraints.Integer](begin, end Type) iter.Seq[Type] {
-	spinner := New(begin, end)
-
 	iterator := func(yield func(Type) bool) {
+		spinner := New(begin, end)
+
 		for ; ; spinner.Spin() {
 			if !yield(spinner.Actual()) {
 				return
@@ -32,12 +32,12 @@ func Iter[Type constraints.Integer](begin, end Type) iter.Seq[Type] {
 //
 // If a zero or negative step is specified, the iterator will panic.
 func IterStep[Type constraints.Integer](begin, end, step Type) iter.Seq[Type] {
-	stepper, err := NewStepper(begin, end, step)
-	if err != nil {
-		panic(err)
-	}
-
 	iterator := func(yield func(Type) bool) {
+		stepper, err := NewStepper(begin, end, step)
+		if err != nil {
+			panic(err)
+		}
+
 		for ; ; stepper.Spin() {
 			if !yield(stepper.Actual()) {
 				return
