@@ -1,14 +1,7 @@
 package spinner
 
 import (
-	"errors"
-
 	"golang.org/x/exp/constraints"
-)
-
-var (
-	ErrStepNegative = errors.New("step is negative")
-	ErrStepZero     = errors.New("step is zero")
 )
 
 // Infinitely iterates over integer values ​​in a given range ​with the specified step.

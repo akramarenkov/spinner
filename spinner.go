@@ -4,7 +4,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-// Infinitely iterates over integer values ​​in a given range ​​in increments of one.
+// Infinitely iterates over integer values ​​in a given range ​with step one.
 type Spinner[Type constraints.Integer] struct {
 	actual Type
 	begin  Type
