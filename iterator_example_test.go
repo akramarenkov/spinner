@@ -18,7 +18,6 @@ func ExampleIter() {
 			return
 		}
 	}
-
 	// Output:
 	// -1
 	// 0
@@ -30,10 +29,10 @@ func ExampleIter() {
 	// 2
 }
 
-func ExampleIterStep() {
+func ExampleStep() {
 	iterations := 0
 
-	for number := range spinner.IterStep(-1, 2, 2) {
+	for number := range spinner.Step(-1, 2, 2) {
 		fmt.Println(number)
 
 		iterations++
@@ -42,7 +41,6 @@ func ExampleIterStep() {
 			return
 		}
 	}
-
 	// Output:
 	// -1
 	// 1

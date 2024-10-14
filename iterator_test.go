@@ -21,11 +21,11 @@ func TestIter(t *testing.T) {
 	require.Equal(t, expected, actual)
 }
 
-func TestIterStep(t *testing.T) {
+func TestStep(t *testing.T) {
 	expected := []int{-2, 1, 2, -2, 1, 2, -2}
 	actual := make([]int, 0, len(expected))
 
-	for number := range IterStep(-2, 2, 3) {
+	for number := range Step(-2, 2, 3) {
 		if len(actual) == len(expected) {
 			break
 		}
@@ -36,13 +36,13 @@ func TestIterStep(t *testing.T) {
 	require.Equal(t, expected, actual)
 }
 
-func TestIterStepPanic(t *testing.T) {
+func TestStepPanic(t *testing.T) {
 	func() {
 		defer func() {
 			require.Equal(t, ErrStepNegative, recover())
 		}()
 
-		for number := range IterStep(-2, 2, -1) {
+		for number := range Step(-2, 2, -1) {
 			_ = number
 		}
 	}()
@@ -52,7 +52,7 @@ func TestIterStepPanic(t *testing.T) {
 			require.Equal(t, ErrStepZero, recover())
 		}()
 
-		for number := range IterStep(-2, 2, 0) {
+		for number := range Step(-2, 2, 0) {
 			_ = number
 		}
 	}()
@@ -66,10 +66,30 @@ func BenchmarkIter(b *testing.B) {
 	}
 }
 
-func BenchmarkIterStep(b *testing.B) {
-	for number := range IterStep(1, b.N, 1) {
+func BenchmarkIterTwoLevel(b *testing.B) {
+	for range b.N {
+		for number := range Iter(1, 1) {
+			if number == 1 {
+				break
+			}
+		}
+	}
+}
+
+func BenchmarkStep(b *testing.B) {
+	for number := range Step(1, b.N, 1) {
 		if number == b.N {
 			return
+		}
+	}
+}
+
+func BenchmarkStepTwoLevel(b *testing.B) {
+	for range b.N {
+		for number := range Step(1, 1, 1) {
+			if number == 1 {
+				break
+			}
 		}
 	}
 }
