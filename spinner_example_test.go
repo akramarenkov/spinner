@@ -14,7 +14,6 @@ func ExampleSpinner() {
 		spinner.Spin()
 		fmt.Println(spinner.Actual())
 	}
-
 	// Output:
 	// -1
 	// 0
@@ -33,7 +32,6 @@ func ExampleSpinner_Next() {
 	for range 7 {
 		fmt.Println(spinner.Next())
 	}
-
 	// Output:
 	// -1
 	// 0

@@ -15,7 +15,6 @@ func ExampleStepper() {
 		spinner.Spin()
 		fmt.Println(spinner.Actual())
 	}
-
 	// Output:
 	// <nil>
 	// -1
@@ -36,7 +35,6 @@ func ExampleStepper_Next() {
 	for range 7 {
 		fmt.Println(spinner.Next())
 	}
-
 	// Output:
 	// <nil>
 	// -1

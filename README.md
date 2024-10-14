@@ -29,7 +29,6 @@ func main() {
         spinner.Spin()
         fmt.Println(spinner.Actual())
     }
-
     // Output:
     // -1
     // 0
