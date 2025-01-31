@@ -18,7 +18,7 @@ type Stepper[Type constraints.Integer] struct {
 // increase.
 //
 // Step must be greater than zero.
-func NewStepper[Type constraints.Integer](begin Type, end Type, step Type) (*Stepper[Type], error) {
+func NewStepper[Type constraints.Integer](begin, end, step Type) (*Stepper[Type], error) {
 	if step < 0 {
 		return nil, ErrStepNegative
 	}

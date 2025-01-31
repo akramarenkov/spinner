@@ -15,7 +15,7 @@ type Spinner[Type constraints.Integer] struct {
 //
 // If begin is greater than end, the actual value will decrease, otherwise it will
 // increase.
-func New[Type constraints.Integer](begin Type, end Type) *Spinner[Type] {
+func New[Type constraints.Integer](begin, end Type) *Spinner[Type] {
 	spn := &Spinner[Type]{
 		actual: begin,
 		begin:  begin,
