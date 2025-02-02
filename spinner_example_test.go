@@ -7,12 +7,12 @@ import (
 )
 
 func ExampleSpinner() {
-	spinner := spinner.New(-1, 2)
-	fmt.Println(spinner.Actual())
+	spn := spinner.New(-1, 2)
+	fmt.Println(spn.Actual())
 
 	for range 7 {
-		spinner.Spin()
-		fmt.Println(spinner.Actual())
+		spn.Spin()
+		fmt.Println(spn.Actual())
 	}
 	// Output:
 	// -1
@@ -26,11 +26,11 @@ func ExampleSpinner() {
 }
 
 func ExampleSpinner_Next() {
-	spinner := spinner.New(-1, 2)
-	fmt.Println(spinner.Actual())
+	spn := spinner.New(-1, 2)
+	fmt.Println(spn.Actual())
 
 	for range 7 {
-		fmt.Println(spinner.Next())
+		fmt.Println(spn.Next())
 	}
 	// Output:
 	// -1

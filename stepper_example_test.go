@@ -7,16 +7,18 @@ import (
 )
 
 func ExampleStepper() {
-	spinner, err := spinner.NewStepper(-1, 2, 2)
-	fmt.Println(err)
-	fmt.Println(spinner.Actual())
+	stp, err := spinner.NewStepper(-1, 2, 2)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(stp.Actual())
 
 	for range 7 {
-		spinner.Spin()
-		fmt.Println(spinner.Actual())
+		stp.Spin()
+		fmt.Println(stp.Actual())
 	}
 	// Output:
-	// <nil>
 	// -1
 	// 1
 	// 2
@@ -28,15 +30,17 @@ func ExampleStepper() {
 }
 
 func ExampleStepper_Next() {
-	spinner, err := spinner.NewStepper(-1, 2, 2)
-	fmt.Println(err)
-	fmt.Println(spinner.Actual())
+	stp, err := spinner.NewStepper(-1, 2, 2)
+	if err != nil {
+		panic(err)
+	}
+
+	fmt.Println(stp.Actual())
 
 	for range 7 {
-		fmt.Println(spinner.Next())
+		fmt.Println(stp.Next())
 	}
 	// Output:
-	// <nil>
 	// -1
 	// 1
 	// 2
