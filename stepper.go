@@ -70,12 +70,12 @@ func (spn *Stepper[Type]) forward() Type {
 
 	actual := spn.actual + spn.step
 
-	// integer overflow
+	// Integer overflow
 	if actual < spn.actual {
 		return spn.end
 	}
 
-	// step is not a multiple of the length between begin and end
+	// Step is not a multiple of the length between begin and end
 	if actual > spn.end {
 		return spn.end
 	}
@@ -90,12 +90,12 @@ func (spn *Stepper[Type]) backward() Type {
 
 	actual := spn.actual - spn.step
 
-	// integer overflow
+	// Integer overflow
 	if actual > spn.actual {
 		return spn.end
 	}
 
-	// step is not a multiple of the length between begin and end
+	// Step is not a multiple of the length between begin and end
 	if actual < spn.end {
 		return spn.end
 	}
