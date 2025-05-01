@@ -4,7 +4,7 @@ import (
 	"golang.org/x/exp/constraints"
 )
 
-// Infinitely iterates over integer values ​​in a given range ​with the specified step.
+// Infinitely iterates over integer values in a given range with the specified step.
 type Stepper[Type constraints.Integer] struct {
 	actual Type
 	begin  Type

@@ -24,7 +24,7 @@ func Iter[Type constraints.Integer](begin, end Type) iter.Seq[Type] {
 	return iterator
 }
 
-// A range iterator for infinite iteration from begin to end inclusive ​with the
+// A range iterator for infinite iteration from begin to end inclusive with the
 // specified step.
 //
 // If begin is greater than end, the return value will be decremented, otherwise it
